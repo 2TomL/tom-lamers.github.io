@@ -1,3 +1,15 @@
+/* Footer social icons consistent style */
+.footer-social-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  margin: 0 6px;
+  transition: filter 0.2s;
+  vertical-align: middle;
+}
+.footer-social-icon:hover {
+  filter: brightness(0.8) drop-shadow(0 0 2px #d32f2f);
+}
 
 
 /* SNAKE GAME SCOPED STYLES */
