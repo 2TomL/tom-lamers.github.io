@@ -33,6 +33,29 @@
 }
 .game body {
   background-color: #222738;
+  /* Hamburger altijd bovenaan en zichtbaar */
+  .hamberger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 60px;
+    background: rgba(34,39,56,0.98);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 3000;
+    padding-right: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .hamberger img {
+    width: 48px;
+    height: 48px;
+  }
+  /* Zorg dat de site-main-wrapper niet onder de hamburger valt */
+  .site-main-wrapper {
+    padding-top: 60px;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
@@ -772,6 +795,103 @@ footer {
     .about-inner-wrap {
         flex-direction: column;
     }
+}
+/* Extra optimalisatie voor iPhone/small screens */
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 0 0 0;
+  }
+  .hero .left,
+  .hero .right {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .hero .left img {
+    width: 60vw;
+    max-width: 220px;
+    margin-bottom: 1.5rem;
+  }
+  .hero .right {
+    margin-top: 0;
+    color: var(--primary);
+  }
+  .about-inner-wrap {
+    flex-direction: column;
+    gap: 0;
+    align-items: center;
+  }
+  .about-me-img {
+    width: 80vw;
+    max-width: 220px;
+    margin-bottom: 20px;
+    height: auto;
+    object-fit: contain;
+  }
+  .about .right {
+    text-align: center;
+    padding: 0 10px;
+  }
+  .about .social {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .card-wrapper,
+  .contact .card-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .card {
+    padding: 1.2rem 0.5rem;
+  }
+  .projects .card img,
+  .contact .card img {
+    width: 60vw;
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  .contact .input-wrap {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .contact .input-wrap-2 {
+    flex-direction: column;
+  }
+  .footer-socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.2rem;
+  }
+  .footer-socials a {
+    margin-right: 0;
+  }
+  .footer-logo {
+    width: 80px;
+    margin-bottom: 1rem;
+  }
+  footer {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero .left img,
+  .about-me-img,
+  .projects .card img,
+  .contact .card img {
+    width: 90vw;
+    max-width: 120px;
+  }
+  .footer-logo {
+    width: 60px;
+  }
 }
 
 /* Contact icons: light background on hover */
