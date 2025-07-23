@@ -1,15 +1,15 @@
 // --- Snake game created with plain JavaScript by Ibrahim fariat ---
 if (document.querySelector('#game .container.noselect')) {
-let dom_replay = document.querySelector("#replay");
-let dom_score = document.querySelector("#score");
-let dom_canvas = document.createElement("canvas");
+var dom_replay = document.querySelector("#replay");
+var dom_score = document.querySelector("#score");
+var dom_canvas = document.createElement("canvas");
 document.querySelector("#canvas").appendChild(dom_canvas);
-let CTX = dom_canvas.getContext("2d");
+var CTX = dom_canvas.getContext("2d");
 
-const W = (dom_canvas.width = 400);
-const H = (dom_canvas.height = 400);
+var W = (dom_canvas.width = 400);
+var H = (dom_canvas.height = 400);
 
-let snake,
+var snake,
   food,
   currentHue,
   cells = 20,
@@ -23,112 +23,110 @@ let snake,
   cellsCount,
   requestID;
 
-let helpers = {
-  Vec: class {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-    }
-    add(v) {
-      this.x += v.x;
-      this.y += v.y;
-      return this;
-    }
-    mult(v) {
-      if (v instanceof helpers.Vec) {
-        this.x *= v.x;
-        this.y *= v.y;
-        return this;
-      } else {
-        this.x *= v;
-        this.y *= v;
-        return this;
-      }
-    }
-  },
-  isCollision(v1, v2) {
-    return v1.x == v2.x && v1.y == v2.y;
-  },
-  garbageCollector() {
-    for (let i = 0; i < particles.length; i++) {
-      if (particles[i].size <= 0) {
-        particles.splice(i, 1);
-      }
-    }
-  },
-  drawGrid() {
-    CTX.lineWidth = 1.1;
-    CTX.strokeStyle = "#232332";
-    CTX.shadowBlur = 0;
-    for (let i = 1; i < cells; i++) {
-      let f = (W / cells) * i;
-      CTX.beginPath();
-      CTX.moveTo(f, 0);
-      CTX.lineTo(f, H);
-      CTX.stroke();
-      CTX.beginPath();
-      CTX.moveTo(0, f);
-      CTX.lineTo(W, f);
-      CTX.stroke();
-      CTX.closePath();
-    }
-  },
-  randHue() {
-    return ~~(Math.random() * 360);
-  },
-  hsl2rgb(hue, saturation, lightness) {
-    if (hue == undefined) {
-      return [0, 0, 0];
-    }
-    var chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
-    var huePrime = hue / 60;
-    var secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
-
-    huePrime = ~~huePrime;
-    var red;
-    var green;
-    var blue;
-
-    if (huePrime === 0) {
-      red = chroma;
-      green = secondComponent;
-      blue = 0;
-    } else if (huePrime === 1) {
-      red = secondComponent;
-      green = chroma;
-      blue = 0;
-    } else if (huePrime === 2) {
-      red = 0;
-      green = chroma;
-      blue = secondComponent;
-    } else if (huePrime === 3) {
-      red = 0;
-      green = secondComponent;
-      blue = chroma;
-    } else if (huePrime === 4) {
-      red = secondComponent;
-      green = 0;
-      blue = chroma;
-    } else if (huePrime === 5) {
-      red = chroma;
-      green = 0;
-      blue = secondComponent;
-    }
-
-    var lightnessAdjustment = lightness - chroma / 2;
-    red += lightnessAdjustment;
-    green += lightnessAdjustment;
-    blue += lightnessAdjustment;
-
-    return [
-      Math.round(red * 255),
-      Math.round(green * 255),
-      Math.round(blue * 255)
-    ];
-  },
-  lerp(start, end, t) {
-    return start * (1 - t) + end * t;
+var helpers = {
+  Vec: function(x, y) {
+    this.x = x;
+    this.y = y;
   }
+};
+helpers.Vec.prototype.add = function(v) {
+  this.x += v.x;
+  this.y += v.y;
+  return this;
+};
+helpers.Vec.prototype.mult = function(v) {
+  if (v instanceof helpers.Vec) {
+    this.x *= v.x;
+    this.y *= v.y;
+    return this;
+  } else {
+    this.x *= v;
+    this.y *= v;
+    return this;
+  }
+};
+helpers.isCollision = function(v1, v2) {
+  return v1.x == v2.x && v1.y == v2.y;
+};
+helpers.garbageCollector = function() {
+  for (var i = 0; i < particles.length; i++) {
+    if (particles[i].size <= 0) {
+      particles.splice(i, 1);
+    }
+  }
+};
+helpers.drawGrid = function() {
+  CTX.lineWidth = 1.1;
+  CTX.strokeStyle = "#232332";
+  CTX.shadowBlur = 0;
+  for (var i = 1; i < cells; i++) {
+    var f = (W / cells) * i;
+    CTX.beginPath();
+    CTX.moveTo(f, 0);
+    CTX.lineTo(f, H);
+    CTX.stroke();
+    CTX.beginPath();
+    CTX.moveTo(0, f);
+    CTX.lineTo(W, f);
+    CTX.stroke();
+    CTX.closePath();
+  }
+};
+helpers.randHue = function() {
+  return Math.floor(Math.random() * 360);
+};
+helpers.hsl2rgb = function(hue, saturation, lightness) {
+  if (hue == undefined) {
+    return [0, 0, 0];
+  }
+  var chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
+  var huePrime = hue / 60;
+  var secondComponent = chroma * (1 - Math.abs((huePrime % 2) - 1));
+
+  huePrime = Math.floor(huePrime);
+  var red;
+  var green;
+  var blue;
+
+  if (huePrime === 0) {
+    red = chroma;
+    green = secondComponent;
+    blue = 0;
+  } else if (huePrime === 1) {
+    red = secondComponent;
+    green = chroma;
+    blue = 0;
+  } else if (huePrime === 2) {
+    red = 0;
+    green = chroma;
+    blue = secondComponent;
+  } else if (huePrime === 3) {
+    red = 0;
+    green = secondComponent;
+    blue = chroma;
+  } else if (huePrime === 4) {
+    red = secondComponent;
+    green = 0;
+    blue = chroma;
+  } else if (huePrime === 5) {
+    red = chroma;
+    green = 0;
+    blue = secondComponent;
+  }
+
+  var lightnessAdjustment = lightness - chroma / 2;
+  red += lightnessAdjustment;
+  green += lightnessAdjustment;
+  blue += lightnessAdjustment;
+
+  return [
+    Math.round(red * 255),
+    Math.round(green * 255),
+    Math.round(blue * 255)
+  ];
+};
+helpers.lerp = function(start, end, t) {
+  return start * (1 - t) + end * t;
 };
 
 let KEY = {
@@ -145,18 +143,22 @@ let KEY = {
   listen() {
     addEventListener(
       "keydown",
-      (e) => {
+      function(e) {
+        if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+        }
         if (e.key === "ArrowUp" && this.ArrowDown) return;
         if (e.key === "ArrowDown" && this.ArrowUp) return;
         if (e.key === "ArrowLeft" && this.ArrowRight) return;
         if (e.key === "ArrowRight" && this.ArrowLeft) return;
         this[e.key] = true;
+        var self = this;
         Object.keys(this)
-          .filter((f) => f !== e.key && f !== "listen" && f !== "resetState")
-          .forEach((k) => {
-            this[k] = false;
+          .filter(function(f) { return f !== e.key && f !== "listen" && f !== "resetState"; })
+          .forEach(function(k) {
+            self[k] = false;
           });
-      },
+      }.bind(this),
       false
     );
   }
