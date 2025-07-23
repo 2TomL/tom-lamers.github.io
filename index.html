@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tom Lamers</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <a id="top"></a>
+    <button class="hamberger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false" style="position: absolute">
+        <img src="img/menu-bar.png" alt="Menu">
+    </button>
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <button class="times" aria-label="Close navigation"><img src="img/menu-bar.png" alt="Close"></button>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#game">Game</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    <div class="site-main-wrapper">
+        <header>
+            <div class="container">
+                <nav id="main-nav" class="flex items-center justify-between">
+                    <div class="left flex items-center">
+                        <div class="branding">
+                            <img src="./img/logo.jpg" alt="Tom Lamers Logo">
+                        </div>
+                        <div class="navbar-links">
+                            <a href="#top">Home</a>
+                            <a href="#about">About</a>
+                            <a href="#projects">Projects</a>
+                            <a href="#game">Game</a>
+                            <a href="#contact">Contact</a>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <button class="btn btn-primary">Contact</button>
+                    </div>
+                </nav>
+                <div class="hero flex items-center justify-between">
+                    <div class="left flex-1 flex justify-center">
+                        <img src="./img/profile-pic.png" alt="Tom Lamers profile picture">
+                    </div>
+                    <div class="right flex-1">
+                        <h1>Tom <span>Lamers</span></h1>
+                        <p>Welcome to my personal portfolio website. I am passionate about design, development, and games. Explore my work and projects below!</p>
+                        <div>
+                            <button class="btn btn-secondary">DOWNLOAD CV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="about" class="about">
+            <div class="container flex items-center about-inner-wrap">
+                <div class="flex-1">
+                    <img class="about-me-img" src="./img/about-pic-half.png" alt="About Tom (half face)">
+                </div>
+                <div class="flex-1 right">
+                    <h1>About <span>Me</span></h1>
+                    <h3>Hello! I’m Tom Lamers.</h3>
+                    <p>I am a creative designer and developer with a love for building beautiful and functional websites and games. I enjoy learning new technologies and working on exciting projects.</p>
+                    <div class="social">
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/PSM1.png" alt="PSM1" title="PSM1">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/VSC.png" alt="Visual Studio Code" title="Visual Studio Code">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/IJ.png" alt="IntelliJ IDEA" title="IntelliJ IDEA">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/html.png" alt="HTML" title="HTML">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/CSS.png" alt="CSS" title="CSS">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/js.png" alt="JavaScript" title="JavaScript">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/typescript.png" alt="TypeScript" title="TypeScript">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/java.png" alt="Java" title="Java">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/trello.png" alt="Trello" title="Trello">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/jira.png" alt="Jira" title="Jira">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/PS.png" alt="Photoshop" title="Photoshop">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/Ai.png" alt="Illustrator" title="Illustrator">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/office.png" alt="Office" title="Office">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/github_about.png" alt="GitHub" title="GitHub">
+                        </div>
+                        <div class="social-icon">
+                            <img class="social-icon-black" src="./img/VW.png" alt="Vectorworks" title="Vectorworks">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h1 class="section-heading"><span>My</span> Projects</h1>
+                <div class="card-wrapper">
+                    <div class="card">
+                        <img src="./img/Project_De_STrooperij.png" alt="De STrooperij">
+                        <h2>De STrooperij</h2>
+                        <p>De STrooperij event website.</p>
+                        <a class="project-link" href="https://destrooperij.be/" target="_blank" rel="noopener" title="Website">
+                            <img src="./img/web.png" alt="Website link" style="width:32px;height:32px;object-fit:contain;">
+                        </a>
+                        <a class="project-link" href="https://github.com/2TomL/De_STrooperij_FINAL" target="_blank" rel="noopener" title="GitHub">
+                            <img src="./img/github.png" alt="GitHub link" style="width:32px;height:32px;object-fit:contain;">
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="./img/project2-placeholder.png" alt="Project 2">
+                        <h2>DJ Swordz</h2>
+                        <p>Artist website</p>
+                        <a class="project-link" href="#" title="Website">
+                            <img src="./img/web.png" alt="Website link" style="width:32px;height:32px;object-fit:contain;">
+                        </a>
+                        <a class="project-link" href="#" title="GitHub">
+                            <img src="./img/github.png" alt="GitHub link" style="width:32px;height:32px;object-fit:contain;">
+                        </a>
+                    </div>
+                    <div class="card">
+                        <img src="./img/BOUM.png" alt="BOUM Broodjeszaak">
+                        <h2>BOUM Broodjeszaak</h2>
+                        <p>Website BOUM coole broodjeszaak.</p>
+                        <a class="project-link" href="#" title="Website">
+                            <img src="./img/web.png" alt="Website link" style="width:32px;height:32px;object-fit:contain;">
+                        </a>
+                        <a class="project-link" href="#" title="GitHub">
+                            <img src="./img/github.png" alt="GitHub link" style="width:32px;height:32px;object-fit:contain;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="game" class="game">
+          <div class="container noselect">
+            <div class="wrapper">
+              <button id="replay">
+                <i class="fas fa-play"></i>
+                RESTART
+              </button>
+              <div id="canvas"></div>
+              <div id="ui">
+                <h2>SCORE</h2>
+                <span id="score">00</span>
+              </div>
+            </div>
+            <div id="author">
+              <h1>SNAKE</h1>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h1 class="section-heading">Contact</h1>
+                <div class="card-wrapper">
+                    <div class="card">
+                        <img src="./img/mail.png" alt="Email">
+                        <h1>Email</h1>
+                        <h6>lamerstom.123@email.com</h6>
+                    </div>
+                    <div class="card">
+                        <img src="./img/atomium.png" alt="Location">
+                        <h1>Location</h1>
+                        <h6>Brussels, Belgium</h6>
+                    </div>
+                </div>
+
+                <form action="">
+                    <div class="input-wrap">
+                        <input type="text" placeholder="Your Name *">
+                        <input type="email" placeholder="Your Email *">
+                    </div>
+                    <div class="input-wrap-2">
+                        <input type="text" placeholder="Your Subject...">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="Your Message..."></textarea>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <img class="footer-logo" src="./img/logo.jpg" alt="Footer Logo" style="height:40px;width:auto;">
+            <div class="footer-socials">
+                <a href="#"><img src="./img/website.svg" alt="Website"></a>
+                <a href="#"><img src="./img/facebook.svg" alt="Facebook"></a>
+                <a href="#"><img src="./img/twitter.svg" alt="Twitter"></a>
+                <a href="#"><img src="./img/pintrest.svg" alt="Pinterest"></a>
+                <a href="#"><img src="./img/instagram.svg" alt="Instagram"></a>
+            </div>
+            <div class="copyright">
+                Copyright 2025 © Tom Lamers
+            </div>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
