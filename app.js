@@ -421,6 +421,10 @@ $(document).ready(function(){
 
     if (hamberger && mobileNav) {
         hamberger.addEventListener('click', openMobileNav);
+        hamberger.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            openMobileNav();
+        }, {passive: false});
     }
     if (times && mobileNav) {
         times.addEventListener('click', closeMobileNav);
