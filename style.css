@@ -48,6 +48,16 @@
     padding-right: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
+    .hamberger {
+        z-index: 9999;
+        pointer-events: auto;
+    }
+    .mobile-nav {
+        pointer-events: none;
+    }
+    .mobile-nav.open {
+        pointer-events: auto;
+    }
   .hamberger img {
     width: 48px;
     height: 48px;
@@ -819,6 +829,16 @@ footer {
         z-index: 3000;
         padding-right: 20px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .hamberger {
+        z-index: 9999;
+        pointer-events: auto;
+    }
+    .mobile-nav {
+        pointer-events: none;
+    }
+    .mobile-nav.open {
+        pointer-events: auto;
     }
     .hamberger img {
         width: 48px;
