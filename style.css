@@ -925,6 +925,17 @@ footer {
     max-width: 180px;
     height: auto;
     margin-bottom: 1rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #07080A 60%, #B71C1C 100%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    padding: 8px;
+    transition: background 0.2s, filter 0.2s;
+    filter: brightness(0.98) drop-shadow(0 0 2px #B71C1C);
+  }
+  .projects .card img:hover,
+  .contact .card img:hover {
+    background: linear-gradient(135deg, #B71C1C 60%, #07080A 100%);
+    filter: brightness(1.05) drop-shadow(0 0 4px #B71C1C);
   }
   .contact .input-wrap {
     grid-template-columns: 1fr;
