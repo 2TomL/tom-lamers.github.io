@@ -400,7 +400,7 @@ $(document).ready(function(){
     }
 
     // Hamburger menu logic
-    var hamberger = document.querySelector('.hamberger');
+    var hamburger = document.querySelector('.hamburger');
     var times = document.querySelector('.times');
     var mobileNav = document.querySelector('.mobile-nav');
     var body = document.body;
@@ -408,20 +408,20 @@ $(document).ready(function(){
     function openMobileNav() {
         mobileNav.classList.add('open');
         mobileNav.setAttribute('aria-hidden', 'false');
-        hamberger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-expanded', 'true');
 
         body.style.overflow = 'hidden';
     }
     function closeMobileNav() {
         mobileNav.classList.remove('open');
         mobileNav.setAttribute('aria-hidden', 'true');
-        hamberger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-expanded', 'false');
         body.style.overflow = '';
     }
 
-    if (hamberger && mobileNav) {
-        hamberger.addEventListener('click', openMobileNav);
-        hamberger.addEventListener('touchstart', function(e) {
+    if (hamburger && mobileNav) {
+        hamburger.addEventListener('click', openMobileNav);
+        hamburger.addEventListener('touchstart', function(e) {
             e.preventDefault();
             openMobileNav();
         }, {passive: false});

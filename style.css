@@ -34,7 +34,7 @@
 .game body {
   background-color: #222738;
   /* Hamburger altijd bovenaan en zichtbaar */
-  .hamberger {
+  .hamburger {
     position: fixed;
     top: 0;
     left: 0;
@@ -48,7 +48,7 @@
     padding-right: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
-    .hamberger {
+    .hamburger {
         z-index: 9999;
         pointer-events: auto;
     }
@@ -58,7 +58,7 @@
     .mobile-nav.open {
         pointer-events: auto;
     }
-  .hamberger img {
+  .hamburger img {
     width: 48px;
     height: 48px;
   }
@@ -210,7 +210,7 @@
   margin-bottom: 20px;
 }
 /* Always show hamburger icon on mobile */
-.hamberger {
+.hamburger {
   position: fixed;
   top: 20px;
   right: 20px;
@@ -218,14 +218,15 @@
   background: none;
   border: none;
   display: block;
+  cursor: pointer;
 }
-.hamberger img {
+.hamburger img {
   width: 48px;
   height: 48px;
   object-fit: contain;
 }
 @media (min-width: 900px) {
-  .hamberger {
+  .hamburger {
     display: none;
   }
 }
@@ -506,7 +507,7 @@ nav .left a:hover, nav .left a.active {
     nav #main-nav {
         display: none;
     }
-    .hamberger {
+    .hamburger {
         display: block;
     }
     .container {
@@ -819,7 +820,7 @@ footer {
     .navbar-links {
         display: none !important;
     }
-    .hamberger {
+    .hamburger {
         display: flex;
         position: fixed;
         top: 0;
@@ -833,7 +834,7 @@ footer {
         padding-right: 20px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
-    .hamberger {
+    .hamburger {
         z-index: 9999;
         pointer-events: auto;
     }
@@ -843,7 +844,7 @@ footer {
     .mobile-nav.open {
         pointer-events: auto;
     }
-    .hamberger img {
+    .hamburger img {
         width: 48px;
         height: 48px;
     }
