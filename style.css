@@ -33,11 +33,17 @@
 }
 .game body {
   background-color: #222738;
-  /* Hamburger altijd bovenaan en zichtbaar */
-  .hamburger {
-    position: fixed;
-    top: 0;
-    left: 0;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6e7888;
+}
+
+/* Hamburger altijd bovenaan en zichtbaar */
+.hamburger {
+  position: fixed;
+  top: 0;
+  left: 0;
     width: 100vw;
     height: 60px;
     background: rgba(34,39,56,0.98);
@@ -66,11 +72,6 @@
   .site-main-wrapper {
     padding-top: 60px;
   }
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #6e7888;
-}
 .game canvas {
   background-color: #181825;
 }
