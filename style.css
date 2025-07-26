@@ -70,7 +70,7 @@
   }
   /* Zorg dat de site-main-wrapper niet onder de hamburger valt */
   .site-main-wrapper {
-    padding-top: 60px;
+    padding-top: 40px;
   }
 .game canvas {
   background-color: #181825;
@@ -258,7 +258,7 @@
     min-height: 340px;
     padding: 32px 18px 24px 18px;
     font-size: 1.08rem;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.32);
   }
   .projects .card img {
     max-width: 95%;
@@ -671,7 +671,7 @@ section {
     background: var(--pure);
     padding: 2rem 1rem;
     border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.32);
     text-align: center;
     transition: box-shadow .3s ease, background .3s ease;
     position: relative;
@@ -695,11 +695,18 @@ section {
     line-height: 1.6;
 }
 .card:hover {
-    box-shadow: 0 4px 16px rgba(61, 207, 211, 0.15);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.44);
     background: var(--light);
 }
-.card:hover img {
-    background: var(--light);
+.projects .card {
+    min-width: 320px;
+    min-height: 340px;
+    padding: 32px 18px 24px 18px;
+    font-size: 1.08rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.32);
+}
+.contact .card {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.32);
 }
 
 /* Contact section images */
