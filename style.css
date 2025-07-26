@@ -127,6 +127,9 @@
   margin-right: 8px;
 }
 @media (max-width: 600px) {
+  .btn.btn-secondary {
+    display: none !important;
+  }
   .contact .card {
     padding: 1rem 0.5rem;
     font-size: 0.95rem;
@@ -207,14 +210,22 @@
   margin-bottom: 20px;
 }
 /* Always show hamburger icon on mobile */
+/* Hamburger always visible on mobile, fixed at top right */
 .hamberger {
+  display: flex;
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 60px;
+  background: #07080A;
+  align-items: center;
+  justify-content: flex-end;
   z-index: 3000;
-  background: none;
+  padding-right: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  pointer-events: auto;
   border: none;
-  display: block;
 }
 .hamberger img {
   width: 48px;
@@ -227,19 +238,27 @@
   }
 }
 /* Always visible and clickable mobile navbar */
+/* Mobile nav overlay, hidden by default, slides in when open */
 .mobile-nav {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2000;
+  background: #07080A;
   width: 100vw;
   height: 100vh;
-  background: rgba(34, 39, 56, 0.98);
-  z-index: 2000;
+  padding: 2rem;
+  padding-top: 5rem;
+  transform: translateX(-100%);
+  transition: transform .5s cubic-bezier(.77,0,.175,1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  transition: none;
+  pointer-events: none;
+}
+.mobile-nav.open {
+  transform: translateX(0);
+  pointer-events: auto;
 }
 .project-link {
     display: inline-block;
