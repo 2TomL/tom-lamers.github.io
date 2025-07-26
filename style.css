@@ -824,28 +824,32 @@ footer {
         position: fixed;
         top: 0;
         right: 0;
-        width: 60px;
+        width: 100vw;
         height: 60px;
         background: #07080A;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
+        z-index: 3000;
+        padding-right: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .hamberger {
         z-index: 9999;
         pointer-events: auto;
-        padding: 0;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .mobile-nav {
+        pointer-events: none;
+    }
+    .mobile-nav.open {
+        pointer-events: auto;
     }
     .hamberger img {
         width: 48px;
         height: 48px;
     }
     .mobile-nav {
-        pointer-events: none;
-        z-index: 9998;
         display: block;
         background: #07080A;
-    }
-    .mobile-nav.open {
-        pointer-events: auto;
     }
     .site-main-wrapper {
         padding-top: 60px;
