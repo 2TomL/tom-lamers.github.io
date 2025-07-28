@@ -12,18 +12,19 @@
 </head>
 
 <body>
-    <a id="top"></a>
+    <a id="home"></a>
+    <!-- Hamburger menu only for mobile -->
     <button class="hamburger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
         <img src="img/menu-bar.png" alt="Menu">
     </button>
-    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
         <ul>
-            <li><a href="#">Home</a></li>
+            <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-    </div>
+    </nav>
     <div class="site-main-wrapper">
         <header>
             <div class="container">
@@ -33,7 +34,7 @@
                             <img src="./img/logo.jpg" alt="Tom Lamers Logo">
                         </div>
                         <div class="navbar-links">
-                            <a href="#top">Home</a>
+                            <a href="#home">Home</a>
                             <a href="#about">About</a>
                             <a href="#projects">Projects</a>
                             <a href="#game">Game</a>
@@ -197,7 +198,7 @@
                     <div class="card">
                         <img src="./img/mail.png" alt="Email">
                         <h1>Email</h1>
-                        <h6>lamerstom.123@email.com</h6>
+                        <h6>lamerstom.123@gmail.com</h6>
                     </div>
                     <div class="card">
                         <img src="./img/atomium.png" alt="Location">
@@ -206,7 +207,9 @@
                     </div>
                 </div>
 
-                <form action="https://formspree.io/f/{jouw_form_id}" method="POST">
+                <form action="https://formspree.io/f/mnqewqzv" method="POST">
+                    <input type="hidden" name="_subject" value="Contact via portfolio Tom Lamers">
+                    <input type="hidden" name="_replyto" value="">
                     <div class="input-wrap">
                         <input type="text" name="name" placeholder="Your Name *" required>
                         <input type="email" name="email" placeholder="Your Email *" required>
@@ -218,6 +221,7 @@
                     <div class="btn-wrapper">
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </div>
+                    <div id="form-success" style="display:none;color:green;margin-top:1em;">Thank you! Your message has been sent.</div>
                 </form>
             </div>
         </section>

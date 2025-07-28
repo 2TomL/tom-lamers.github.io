@@ -399,58 +399,87 @@ $(document).ready(function(){
         });
     }
 
-    // Hamburger menu logic
-    var hamburger = document.querySelector('.hamburger');
-    var times = document.querySelector('.times');
-    var mobileNav = document.querySelector('.mobile-nav');
-    var body = document.body;
 
-    function openMobileNav() {
+    // Hamburger menu mobile toggle (enkel mobiel, echte toggle, fix scroll)
+    document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileNav = document.getElementById('mobile-nav');
+      if (!hamburger || !mobileNav) return;
+
+      function openMenu() {
         mobileNav.classList.add('open');
-        mobileNav.setAttribute('aria-hidden', 'false');
         hamburger.setAttribute('aria-expanded', 'true');
-
-        body.style.overflow = 'hidden';
-    }
-    function closeMobileNav() {
+        mobileNav.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('no-scroll');
+      }
+      function closeMenu() {
         mobileNav.classList.remove('open');
-        mobileNav.setAttribute('aria-hidden', 'true');
         hamburger.setAttribute('aria-expanded', 'false');
-        body.style.overflow = '';
-    }
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('no-scroll');
+      }
 
-    if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', openMobileNav);
-        hamburger.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            openMobileNav();
-        }, {passive: false});
-    }
-    if (times && mobileNav) {
-        times.addEventListener('click', closeMobileNav);
-    }
+      function toggleMenu(e) {
+        if (e) e.stopPropagation();
+        if (mobileNav.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
 
-    // Close mobile nav when clicking a link
-    document.querySelectorAll('.mobile-nav ul li a').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            const href = link.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
-                closeMobileNav();
-            }
+      hamburger.addEventListener('click', toggleMenu);
+      hamburger.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        toggleMenu(e);
+      }, {passive: false});
+
+      // Sluit menu bij klik buiten menu
+      document.addEventListener('click', function(e) {
+        if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && e.target !== hamburger && !hamburger.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Sluit menu bij klik op link
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMenu();
         });
+      });
     });
 
-    // Smooth scroll for desktop nav links
+
+    // Smooth scroll voor desktop nav links (ook Home)
     document.querySelectorAll('nav .left a').forEach(function(link) {
         link.addEventListener('click', function(e) {
             const href = link.getAttribute('href');
             if (href && href.startsWith('#')) {
                 e.preventDefault();
-                document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                if (href === '#home' || href === '#top') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  const target = document.querySelector(href);
+                  if (target) target.scrollIntoView({ behavior: 'smooth' });
+                }
             }
         });
+    });
+
+    // Smooth scroll voor hamburger menu links (ook Home)
+    document.querySelectorAll('.mobile-nav a').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          if (href === '#home' || href === '#top') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
     });
 
     // Contact button scrolls to contact section
@@ -461,4 +490,70 @@ $(document).ready(function(){
             document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
         });
     }
+
+    // Hamburger menu mobile toggle
+    (function() {
+      const hamburger = document.querySelector('.hamburger');
+      const mobileNav = document.getElementById('mobile-nav');
+      if (!hamburger || !mobileNav) return;
+
+      function openMenu() {
+        mobileNav.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        mobileNav.setAttribute('aria-hidden', 'false');
+      }
+      function closeMenu() {
+        mobileNav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+      }
+
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (mobileNav.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // Sluit menu bij klik buiten menu
+      document.addEventListener('click', function(e) {
+        if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && e.target !== hamburger && !hamburger.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Sluit menu bij klik op link
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          closeMenu();
+        });
+      });
+    })();
+
+
+    // Formspree success message
+    (function() {
+      var form = document.querySelector('form[action*="formspree"]');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action);
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState !== 4) return;
+          if (xhr.status === 200) {
+            form.style.display = 'none';
+            var msg = document.getElementById('form-success');
+            if (msg) msg.style.display = 'block';
+          } else {
+            alert('Sorry, something went wrong. Try again later.');
+          }
+        };
+        xhr.send(data);
+      });
+    })();
 });
