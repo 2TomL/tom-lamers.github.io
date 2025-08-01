@@ -11,6 +11,16 @@
   filter: brightness(0.8) drop-shadow(0 0 2px #d32f2f);
 }
 
+/* Project card images clickable */
+.projects .card a img {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.projects .card a:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
 
 /* SNAKE GAME SCOPED STYLES */
 @font-face {

@@ -1,5 +1,12 @@
 // --- Snake game created with plain JavaScript by Ibrahim fariat ---
 if (document.querySelector('#game .container.noselect')) {
+// Add global preventDefault for arrow keys when game is active
+document.addEventListener('keydown', function(e) {
+  if (e.key.startsWith('Arrow')) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
 let dom_replay = document.querySelector("#replay");
 let dom_score = document.querySelector("#score");
 let dom_canvas = document.createElement("canvas");
