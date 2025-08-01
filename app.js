@@ -546,26 +546,47 @@ $(document).ready(function(){
     })();
 
 
-    // Formspree success message
+    // Contact form handling with fallback to mailto
     (function() {
       var form = document.querySelector('form[action*="formspree"]');
       if (!form) return;
+      
       form.addEventListener('submit', function(e) {
         e.preventDefault();
+        
         var data = new FormData(form);
         var xhr = new XMLHttpRequest();
         xhr.open(form.method, form.action);
         xhr.setRequestHeader('Accept', 'application/json');
+        
         xhr.onreadystatechange = function() {
           if (xhr.readyState !== 4) return;
+          
           if (xhr.status === 200) {
+            // Success with Formspree
             form.style.display = 'none';
             var msg = document.getElementById('form-success');
             if (msg) msg.style.display = 'block';
           } else {
-            alert('Sorry, something went wrong. Try again later.');
+            // Fallback to mailto if Formspree fails
+            var name = form.querySelector('[name="name"]').value;
+            var email = form.querySelector('[name="_replyto"]').value;
+            var subject = form.querySelector('[name="subject"]').value;
+            var message = form.querySelector('[name="message"]').value;
+            
+            var mailtoLink = 'mailto:lamerstom.123@gmail.com' +
+              '?subject=' + encodeURIComponent('Contact via portfolio: ' + subject) +
+              '&body=' + encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n' +
+                'Subject: ' + subject + '\n\n' +
+                'Message:\n' + message
+              );
+            
+            window.location.href = mailtoLink;
           }
         };
+        
         xhr.send(data);
       });
     })();
