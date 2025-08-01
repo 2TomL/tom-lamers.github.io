@@ -150,6 +150,12 @@ let KEY = {
         if (e.key === "ArrowDown" && this.ArrowUp) return;
         if (e.key === "ArrowLeft" && this.ArrowRight) return;
         if (e.key === "ArrowRight" && this.ArrowLeft) return;
+        
+        // Prevent default scrolling behavior for arrow keys
+        if (e.key.startsWith("Arrow")) {
+          e.preventDefault();
+        }
+        
         this[e.key] = true;
         Object.keys(this)
           .filter((f) => f !== e.key && f !== "listen" && f !== "resetState")
