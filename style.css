@@ -390,6 +390,7 @@ nav .left a:hover, nav .left a.active {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.493);
   padding: 8px;
   transition: background 0.2s;
+  cursor: pointer;
 }
 .hamburger img {
   width: 40px;
