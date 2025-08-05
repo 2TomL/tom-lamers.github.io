@@ -400,8 +400,9 @@ nav .left a:hover, nav .left a.active {
   display: flex;
   position: fixed;
   top: 16px;
-  right: 16px;
-  z-index: 3001;
+  left: 16px;
+  right: auto;
+  z-index: 9999;
   background: #000000;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.493);
