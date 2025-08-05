@@ -414,7 +414,7 @@ $(document).ready(function(){
 
 
     // Hamburger menu mobile toggle (enkel mobiel, echte toggle, fix scroll)
-    document.addEventListener('DOMContentLoaded', function() {
+    (function() {
       const hamburger = document.querySelector('.hamburger');
       const mobileNav = document.getElementById('mobile-nav');
       if (!hamburger || !mobileNav) return;
@@ -431,7 +431,6 @@ $(document).ready(function(){
         mobileNav.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('no-scroll');
       }
-
       function toggleMenu(e) {
         if (e) e.stopPropagation();
         if (mobileNav.classList.contains('open')) {
@@ -449,7 +448,12 @@ $(document).ready(function(){
 
       // Sluit menu bij klik buiten menu
       document.addEventListener('click', function(e) {
-        if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && e.target !== hamburger && !hamburger.contains(e.target)) {
+        if (
+          mobileNav.classList.contains('open') &&
+          !mobileNav.contains(e.target) &&
+          e.target !== hamburger &&
+          !hamburger.contains(e.target)
+        ) {
           closeMenu();
         }
       });
@@ -460,7 +464,7 @@ $(document).ready(function(){
           closeMenu();
         });
       });
-    });
+    })();
 
 
     // Smooth scroll voor desktop nav links (ook Home)
@@ -486,10 +490,17 @@ $(document).ready(function(){
         if (href && href.startsWith('#')) {
           e.preventDefault();
           if (href === '#home' || href === '#top') {
+            // Sluit menu en scroll naar top
+            document.querySelector('.mobile-nav').classList.remove('open');
+            document.body.classList.remove('no-scroll');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           } else {
             const target = document.querySelector(href);
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
+            if (target) {
+              document.querySelector('.mobile-nav').classList.remove('open');
+              document.body.classList.remove('no-scroll');
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
           }
         }
       });
@@ -504,46 +515,7 @@ $(document).ready(function(){
         });
     }
 
-    // Hamburger menu mobile toggle
-    (function() {
-      const hamburger = document.querySelector('.hamburger');
-      const mobileNav = document.getElementById('mobile-nav');
-      if (!hamburger || !mobileNav) return;
-
-      function openMenu() {
-        mobileNav.classList.add('open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        mobileNav.setAttribute('aria-hidden', 'false');
-      }
-      function closeMenu() {
-        mobileNav.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        mobileNav.setAttribute('aria-hidden', 'true');
-      }
-
-      hamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (mobileNav.classList.contains('open')) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      // Sluit menu bij klik buiten menu
-      document.addEventListener('click', function(e) {
-        if (mobileNav.classList.contains('open') && !mobileNav.contains(e.target) && e.target !== hamburger && !hamburger.contains(e.target)) {
-          closeMenu();
-        }
-      });
-
-      // Sluit menu bij klik op link
-      mobileNav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          closeMenu();
-        });
-      });
-    })();
+    // ...existing code...
 
 
     // Contact form handling with fallback to mailto

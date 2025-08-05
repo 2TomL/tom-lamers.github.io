@@ -1,3 +1,20 @@
+/* Branding/logo link zonder border of achtergrond */
+.logo-link {
+  display: inline-block;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 0;
+}
+.logo-link:focus,
+.logo-link:hover,
+.logo-link:active {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
 /* Footer social icons consistent style */
 .footer-social-icon {
   width: 32px;
